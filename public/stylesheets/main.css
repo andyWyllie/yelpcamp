@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300i');
+
+body{
+  color: rgb(42, 72, 46);
+  background-color: rgba(255, 249, 233, .4);;
+}
+.navbar *{
+  color: rgb(42, 72, 46) !important;
+}
+.jumbotron{
+   background-image:url('/bg1.png');
+   background-repeat: repeat-x;
+   background-position: center bottom;
+   background-size: auto 100%;
+   border: 1px solid grey;
+   border-top-color: rgba(0,0,0,0);
+   border-radius: 0 0 5px 5px;
+}
+.popout{
+  background: rgba(255,255,255,.8);
+  padding: 10px;
+  width: auto;
+  display: table;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  border: 2px solid rgb(42, 72, 46);
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+.campImage {
+  vertical-align: top;
+  height: 210px;
+  width: 100%;
+  object-fit: cover;
+}
+.item:hover .campImage{
+  filter: blur(2px) brightness(130%) grayscale(50%);
+  transition: .5s ease-in-out;
+}
+.item:hover .dynamicCaption{
+  color: rgba(236, 229, 213, 1);
+  background-color: rgb(42, 72, 46);
+  transition: all .3s ease-in-out;
+}
+/*.campImage a {*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  top: 0;*/
+/*  bottom: 0;*/
+/*  position: absolute;*/
+/*}*/
+.item {
+  padding: 0;
+  height: 210px;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 220px;
+  max-width: 310px;
+  width: 100%;
+  top: 30%;
+  background-color: rgb(42, 72, 46);
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  border: 2px solid black;
+}
+.dynamicCaption{
+    font-size: 24px;
+    color: rgba(236, 229, 213, 0);
+      position: absolute;
+  top: 40%;
+  width: 100%;
+  font-family: Raleway;
+  padding: 5px 10px 5px 10px;
+}
+
+/*Adding hover over images to make title bar appear: Goal: hover makes forest green title bar pop up from bottom of image. For mobile
+just have this title bar always visible*/
+
+/*Making the add campground button fit theme better*/
+.addBtn{
+      color: white;
+      background-color:rgba(42, 72, 46, .8);
+      border:2px solid rgb(42, 72, 46);
+}
+.addBtn:hover{
+  text-decoration: underline;
+  color: #ece5d5;
+}
+
+
+/*new campground styling*/
+.newContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px auto;
+  align-items: center;
+}
+.form-control{
+  min-width: 300px;
+  margin-top: 10px;
+}
+#new{
+      color: white;
+      background-color:rgba(42, 72, 46, .8);
+      border:2px solid rgb(42, 72, 46);
+      width: 70%;
+      margin: 5px 15%;
+}
+#new:hover{
+  text-decoration: underline;
+  color: #ece5d5;
+}
+
+
+
+@media screen and (max-width: 500px){
+  .jumbotron{
+    align-items: center;
+  }
+  .addBtn{
+      color: white;
+      background-color:rgba(42, 72, 46, .9);
+      border:2px solid rgb(42, 72, 46);
+      width: 100%;
+}
+  h1{
+    font-size: 24px;
+    text-align: center;
+  }
+  p{
+    text-align: center;
+  }
+}
+
+/*show page styling*/
+/*.showContainer img{*/
+/*  height: 300px;*/
+/*  width: 420px;*/
+/*  object-fit: cover;*/
+/*}*/
+.showTitle{
+  padding: .5em 0em .2em 1em;
+}
+.commentBtn{
+      color: white;
+      background-color:rgba(42, 72, 46, .8);
+      border:2px solid rgb(42, 72, 46);
+      width: 50%;
+      margin: 0 auto;
+}
+.commentBtn:hover{
+  text-decoration: underline;
+  color: #ece5d5;
+}
+
+.commentContainer{
+  padding: 2em 1em 0em 1em;
+  background-color: rgba(217, 212, 200, .8);
+  border: 1px solid rgb(42, 72, 46);
+  border-radius: 2px;
+}
+.commentAuthor{
+  padding: .5em;
+   color: white;
+  background-color:rgba(42, 72, 46, .8);
+  border: 1px solid rgb(42,72,46);
+  border-radius: 10px;
+}
+.commentComment{
+  display: inline-block;
+  margin-left: 1em;
+  padding: .5em;
+  background-color: rgba(255,255,255, .8);
+  border: 1px solid rgb(42,72,46);
+  border-radius: 10px;
+}

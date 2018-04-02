@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+    <div class="showContainer container">
+        <div class="row">
+            <div class="col-md-3">
+                <p class="lead">YelpCamp</p>
+                <div class="list-group">
+                    <l1 class="list-group-item">
+                        Info 1
+                    </l1>
+                    <l1 class="list-group-item">
+                        Info 2
+                    </l1>
+                    <l1 class="list-group-item">
+                        Info 3
+                    </l1>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <!--Bootstrap Card showing image/title/description. Add button for comments-->
+            <div class="card">
+                <h1 class="card-title-top showTitle"><%= campground.name %></h1>
+                <img class="card-img img-responsive" src="<%= campground.image %>">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">$10</h6>
+            <p class="card-text"><%= campground.description %></p>
+          </div>
+            <div class="commentContainer">
+                <% campground.comments.forEach(function(comment){ %>
+                <p><strong><span class="commentAuthor"><%= comment.author %></span></strong><span class="commentComment"><%= comment.text %></span><span class="commentComment">10 days ago</span></p>
+                <hr>
+            <% }) %>
+            <a href="/campgrounds/<%= campground._id %>/comments/new" class="btn commentBtn">Add Comment</a>
+            <p>
+            <!--<a href="#" class="card-link">Card link</a>-->
+            </p>
+            </div>
+
+
+        </div>                
+            </div>
+        </div>
+
+    </div>
+<% include ../partials/footer %>
