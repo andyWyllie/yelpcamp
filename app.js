@@ -34,7 +34,7 @@ app.use(function(req, res, next){
 
 
 
-seedDB();
+// seedDB();
 mongoose.connect("mongodb://localhost/yelp_camp");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
