@@ -23,6 +23,7 @@
           <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted">$10</h6>
             <p class="card-text"><%= campground.description %></p>
+            <h6 class="card-subtitle mb-2 text-muted">Submitted by: <%= campground.author.username %></h6>
           </div>
             <div class="commentContainer">
                 <% campground.comments.forEach(function(comment){ %>
