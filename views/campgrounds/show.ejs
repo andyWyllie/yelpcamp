@@ -24,6 +24,7 @@
             <h6 class="card-subtitle mb-2 text-muted">$10</h6>
             <p class="card-text"><%= campground.description %></p>
             <h6 class="card-subtitle mb-2 text-muted">Submitted by: <%= campground.author.username %></h6>
+            <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-warning">Edit</a>
           </div>
             <div class="commentContainer">
                 <% campground.comments.forEach(function(comment){ %>

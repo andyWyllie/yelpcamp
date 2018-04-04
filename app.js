@@ -7,7 +7,8 @@ var express    = require('express'),
     passport   = require('passport'),
     localStrategy = require('passport-local'),
     User        = require('./models/user'),
-    seedDB     = require('./seeds')
+    seedDB     = require('./seeds'),
+    methodOverride = require('method-override')
     
     // requiring routes
 var commentRoutes = require("./routes/comments"),
@@ -39,6 +40,7 @@ mongoose.connect("mongodb://localhost/yelp_camp");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'));
 
 app.use(indexRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
