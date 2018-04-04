@@ -24,11 +24,13 @@
             <h6 class="card-subtitle mb-2 text-muted">$10</h6>
             <p class="card-text"><%= campground.description %></p>
             <h6 class="card-subtitle mb-2 text-muted">Submitted by: <%= campground.author.username %></h6>
+        <% if (currentUser && campground.author.id.equals(currentUser._id)) { %>  
             <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-warning">Edit</a>
             <form id="delete-btn" action="/campgrounds/<%= campground._id %>/?_method=DELETE" method="POST">
                 <button class="btn btn-danger">Delete</button>
             </form>
-          </div>
+         <% } %>   
+            </div>
             <div class="commentContainer">
                 <% campground.comments.forEach(function(comment){ %>
                 <p><strong><span class="commentAuthor"><%= comment.author.username %></span></strong><span class="commentComment"><%= comment.text %></span><span class="commentComment">10 days ago</span></p>
