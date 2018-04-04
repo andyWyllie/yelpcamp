@@ -157,9 +157,13 @@ just have this title bar always visible*/
       width: 50%;
       margin: 0 auto;
 }
+
 .commentBtn:hover{
   text-decoration: underline;
   color: #ece5d5;
+}
+#delete-btn{
+  display: inline;
 }
 
 .commentContainer{
