@@ -33,7 +33,11 @@
             </div>
             <div class="commentContainer">
                 <% campground.comments.forEach(function(comment){ %>
-                <p><strong><span class="commentAuthor"><%= comment.author.username %></span></strong><span class="commentComment"><%= comment.text %></span><span class="commentComment">10 days ago</span></p>
+                <p><strong><span class="commentAuthor"><%= comment.author.username %></span></strong>
+                <span class="commentComment"><%= comment.text %></span>
+                <span class="commentComment">10 days ago</span></p>
+                <a class="btn btn-xs btn-warning" 
+                href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit</a>
                 <hr>
             <% }) %>
             <a href="/campgrounds/<%= campground._id %>/comments/new" class="btn commentBtn">Add Comment</a>
