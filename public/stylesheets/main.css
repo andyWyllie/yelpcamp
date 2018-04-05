@@ -162,7 +162,7 @@ just have this title bar always visible*/
   text-decoration: underline;
   color: #ece5d5;
 }
-#delete-btn{
+.delete-btn{
   display: inline;
 }
 
