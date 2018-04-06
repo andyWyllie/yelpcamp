@@ -5,8 +5,12 @@
     
     <form action="/campgrounds/<%= campground._id %>/?_method=PUT" method="POST">
         <input class="form-control" type="text" name="campground[name]" value="<%= campground.name %>">
+        <input class="form-control" type="number" name="campground[price]" value="<%= campground.price %>" min="0.00" step="1.00">
         <input class="form-control" type="text" name="campground[image]" value="<%= campground.image %>">
         <input class="form-control" type="text" name="campground[desc]" value="<%= campground.description %>">
+        <div class="form-group">
+            <input class="form-control" type="text" name="location" id="location" value="<%= campground.location %>">
+        </div>
         <button class="btn btn-lg btn-default" id="new">Submit</button>
     </form>
 </div>

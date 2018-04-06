@@ -48,13 +48,13 @@ body{
   background-color: rgb(42, 72, 46);
   transition: all .3s ease-in-out;
 }
-/*.campImage a {*/
-/*  left: 0;*/
-/*  right: 0;*/
-/*  top: 0;*/
-/*  bottom: 0;*/
-/*  position: absolute;*/
-/*}*/
+
+/* Google Maps */
+#map {
+  border-top: 1px solid grey;
+    height: 300px;
+    width: 100%;
+}
 .item {
   padding: 0;
   height: 210px;
@@ -142,13 +142,21 @@ just have this title bar always visible*/
 }
 
 /*show page styling*/
-/*.showContainer img{*/
-/*  height: 300px;*/
-/*  width: 420px;*/
-/*  object-fit: cover;*/
-/*}*/
+.showContainer{
+  max-width: 620px;
+}
+.showContainer img{
+  max-height: 480px;
+  object-fit: cover;
+}
 .showTitle{
   padding: .5em 0em .2em 1em;
+}
+.mapDiv{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: center;
+  font-weight: bold;
 }
 .commentBtn{
       color: white;

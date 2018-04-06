@@ -1,4 +1,5 @@
-var express    = require('express'),
+var dotEnv     = require('dotenv'),
+    express    = require('express'),
     bodyParser = require('body-parser'),
     mongoose   = require('mongoose'),
     app        = express(),

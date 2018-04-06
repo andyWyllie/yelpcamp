@@ -1,27 +1,26 @@
 <% include ../partials/header %>
-    <div class="showContainer container">
+    <div class="container">
         <div class="row">
             <div class="col-md-3">
                 <p class="lead">YelpCamp</p>
                 <div class="list-group">
-                    <l1 class="list-group-item">
-                        Info 1
-                    </l1>
-                    <l1 class="list-group-item">
-                        Info 2
-                    </l1>
-                    <l1 class="list-group-item">
-                        Info 3
-                    </l1>
+                    <li class="list-group-item mapDiv">
+                    <%= campground.location.substring(0,50) + "..." %><br>
+                    <div id="map"></div>
+                    </li>
+                    <li class="list-group-item">
+                        Future Fuzzy Search
+                    </li>
+
                 </div>
             </div>
             <div class="col-md-9">
                 <!--Bootstrap Card showing image/title/description. Add button for comments-->
-            <div class="card">
+            <div class="card showContainer">
                 <h1 class="card-title-top showTitle"><%= campground.name %></h1>
-                <img class="card-img img-responsive" src="<%= campground.image %>">
+                <img class="card-img img-responsive showImg" src="<%= campground.image %>">
           <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">$10</h6>
+            <h6 class="card-subtitle mb-2 text-muted">$<%= campground.price %>/night</h6>
             <p class="card-text"><%= campground.description %></p>
             <h6 class="card-subtitle mb-2 text-muted">Submitted by: <%= campground.author.username %></h6>
         <% if (currentUser && campground.author.id.equals(currentUser._id)) { %>  
@@ -57,4 +56,34 @@
         </div>
 
     </div>
+
+<script>
+  function initMap() {
+    var lat = <%= campground.lat %>;
+    var lng = <%= campground.lng %>;
+    var center = {lat: lat, lng: lng };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: center,
+        scrollwheel: false
+    });
+    var contentString = `
+      <strong><%= campground.name %><br />
+      <%= campground.location %></strong>
+      <p><%= campground.description %></p>
+    `
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+        position: center,
+        map: map
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKKERZEYXYrA2_1doyTGVJBuMnzIasQ3Q&callback=initMap"></script>    
+    
 <% include ../partials/footer %>
