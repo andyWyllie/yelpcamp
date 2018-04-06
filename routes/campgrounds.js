@@ -36,7 +36,8 @@ router.post('/', middleware.isLoggedIn, function(req, res){
         if(err){
             console.log('campground not created');
         } else{
-            res.redirect('/campgrounds')
+            req.flash('success', "Campground created!");
+            res.redirect('/campgrounds');
         }
     });
 });

@@ -54,5 +54,7 @@
   <% if(error && error.length > 0){ %>
 <div class="alert alert-danger"><%= error %></div>
 <% } %>
-<div class="alert alert-success"><%= success %></div>  
+<% if(success && success.length > 0){ %>
+<div class="alert alert-success"><%= success %></div>
+<% } %>
 </div>
