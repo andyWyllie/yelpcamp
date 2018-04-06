@@ -5,6 +5,7 @@
     
     <form action="/campgrounds" method="POST">
         <input class="form-control" type="text" name="name" placeholder="name">
+        <input class="form-control" type="number" name="price" placeholder="price" min="0.00" step="1.00">
         <input class="form-control" type="text" name="image" placeholder="image url">
         <input class="form-control" type="text" name="desc" placeholder="description">
         <button class="btn btn-lg btn-default" id="new">Submit</button>
