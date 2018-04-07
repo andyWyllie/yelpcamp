@@ -1,5 +1,4 @@
 
-==========================
 This project is hosted at: https://ancient-eyrie-68226.herokuapp.com/
 ==========================
 #Starting with Version 1
