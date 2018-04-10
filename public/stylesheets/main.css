@@ -39,6 +39,7 @@ body{
   width: 100%;
   object-fit: cover;
 }
+
 .item:hover .campImage{
   filter: blur(2px) brightness(130%) grayscale(50%);
   transition: .5s ease-in-out;

@@ -41,8 +41,8 @@ app.use(function(req, res, next){
 
 
 // seedDB();
-// mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect("mongodb://andy45386:wyllie92@ds237389.mlab.com:37389/yelpcampandy");
+mongoose.connect(process.env.DATABASEURL);
+// mongoose.connect("mongodb://andy45386:wyllie92@ds237389.mlab.com:37389/yelpcampandy");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
