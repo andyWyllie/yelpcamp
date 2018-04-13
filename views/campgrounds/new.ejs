@@ -1,17 +1,117 @@
 <% include ../partials/header %>
 
-<div class="newContainer">
-    <h1>Create a New Campground</h1>
-    
-    <form action="/campgrounds" method="POST">
-        <input class="form-control" type="text" name="name" placeholder="name">
-        <input class="form-control" type="number" name="price" placeholder="price" min="0.00" step="1.00">
-        <input class="form-control" type="text" name="image" placeholder="image url">
-        <input class="form-control" type="text" name="desc" placeholder="description">
-        <div class="form-group">
-            <input class="form-control" type="text" name="location" id="location" placeholder="Enter Location">
-        </div>
-        <button class="btn btn-lg btn-default" id="new">Submit</button>
-    </form>
+
+<style>
+/*campground search input styling*/
+	.hl{
+	background-color: yellow;
+	}
+	.search{
+	    max-width: 400px;
+	}
+	.campgroundSearchForm{
+	   margin-top: 20px;
+	   margin-bottom: 20px;
+	   display: flex;
+	   flex-direction: column;
+	}
+	.suggestions li {
+	    list-style: none;
+	    background: white;
+	    transition:background 0.2s;
+	    border-bottom: 1px solid #D8D8D8;
+	    padding:10px;
+	    margin: 2.5px;
+	    border-radius: 5px;
+	    box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+	}
+	.suggestions li:hover {
+	    background: rgba(239, 239, 239, .9);
+	}
+</style>
+
+<div class="container">
+    <div class="row">
+    <!--form for creating a new campground-->
+    <div class="col-md-9">
+    <div class="newContainer">
+        <h1>Create a New Campground</h1>
+        
+        <form action="/campgrounds" method="POST">
+            <input class="form-control" type="text" name="name" placeholder="name">
+            <input class="form-control" type="number" name="price" placeholder="price" min="0.00" step="1.00">
+            <input class="form-control" type="text" name="image" placeholder="image url">
+            <input class="form-control" type="text" name="desc" placeholder="description">
+            <div class="form-group">
+                <input class="form-control" type="text" name="location" id="location" placeholder="Enter Location">
+            </div>
+            <button class="btn btn-lg btn-default" id="new">Submit</button>
+        </form>
+    </div>
+    </div>
+    <!--adding in campground search-->
+        <div class="col-md-3 campgroundSearchForm">
+        <h3>Search for a US campground</h3>
+        <form>
+    	<input class="search form-control" placeholder="search for a campground!" type="text">
+        <ul class="suggestions">
+        </ul>
+      </form>
+    </div>
+    </div>
 </div>
+
+
+<script>
+	const url = 'https://raw.githubusercontent.com/thlorenz/boondocker/master/data/campsites.json';
+const campgrounds = [];
+
+// selecting the search input
+const searchInput = document.querySelector('.search');
+
+// selecting the fields list that will be populated
+const suggestions = document.querySelector('.suggestions');
+
+// each individual li
+const suggestion = document.querySelector('li');
+
+fetch(url)
+	.then(jumbled => jumbled.json())
+	.then(data => campgrounds.push(...data))
+	.catch(function(){
+    alert('ERROR');
+  });
+// findMatches wordToMatch is the input text, cities is the array containing json data.
+function findMatches(wordToMatch, campgrounds){
+// 	reduce array size to only ones with matching regexp in name
+	return campgrounds.filter(place => {
+// if campground name matches wordToMatch
+	const regex = new RegExp(wordToMatch, 'gi');
+		return place.name.match(regex);
+	});
+}
+
+function displayMatches(){
+// 	make array of matches
+	const matchArray = findMatches(this.value, campgrounds);
+// limiting array length to 10 to improve performance
+	matchArray.length = 10;
+	const html = matchArray.map(place => {	const regex = new RegExp(this.value, 'gi');
+// 	highlight campground names with regex here
+	const campName = place.name.replace(regex, `<span class="hl">${this.value}</span>`);
+// return campground name in list below input
+return `<li>${campName}</li>`}).join('').toLowerCase();
+	suggestions.innerHTML = html;
+};
+
+// updates on each 'change' event
+searchInput.addEventListener('change', displayMatches);
+// updates on each keystroke event
+searchInput.addEventListener('keyup', displayMatches);
+
+</script>
+
+
+
+
 <% include ../partials/footer %>
